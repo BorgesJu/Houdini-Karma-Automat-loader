@@ -1,4 +1,5 @@
-# Karma Auto(matic)
+
+# Karma Auto(matic)Mat(erial)
 
 ![Karma Material Importer](https://github.com/BorgesJu/Houdini-Karma-Automat-loader/assets/39913185/73f5fee5-40fe-4794-844a-d68f048623f9)
 
@@ -49,3 +50,8 @@ Contributions are welcome! If you have improvements or bug fixes, please feel fr
 
 [Aletheia Design](https://aletheiadesign.fr)  
 [Aletheiadesign|Instagram](https://www.instagram.com/al3ph.d.sign/)
+
+
+
+https://github.com/BorgesJu/Houdini-Karma-Automat-loader/assets/39913185/b9a657fb-f708-4c3f-bcdc-cfc7d7be4fbd
+
