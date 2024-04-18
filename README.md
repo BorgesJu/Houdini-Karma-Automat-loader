@@ -1,9 +1,8 @@
 
-# Karma Auto(matic)Mat(erial)
+# Karma Auto(matic)Mat(erial) Importer
 
 ![Karma Material Importer](https://github.com/BorgesJu/Houdini-Karma-Automat-loader/assets/39913185/73f5fee5-40fe-4794-844a-d68f048623f9)
 
-Mat(erial) Importer
 
 ## Overview
 Karma Automatic Material Importer is a script designed for SideFX Houdini that automates the process of importing and setting up materials using the Karma renderer and MaterialX standards. This tool is ideal for streamlining the texturing workflow, particularly when working with multiple texture files.
