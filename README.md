@@ -12,9 +12,6 @@ Karma Automatic Material Importer is a script designed for SideFX Houdini that a
 - **Automatic Node Connections:** Connects textures to the appropriate slots in the `mtlxstandard_surface` shader based on the texture type.
 - **Node Renaming:** Renames the main material node based on the folder name from which textures are imported.
 
-## Installation
-To use the Karma Automatic Material Importer, copy the Python script into your Houdini Python script directory.
-
 ## Usage
 1. **Add to Houdini Toolshelf:**
    Create a new tool in Houdini's toolshelf and insert the script. This allows for easy access and execution within the Houdini environment.
