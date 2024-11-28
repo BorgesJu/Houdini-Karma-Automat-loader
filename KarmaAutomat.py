@@ -15,9 +15,13 @@ texture_types = {
 
 # Fonction pour déterminer le type de texture en fonction du nom du fichier
 def get_texture_type(file_name):
+    file_name_lower = file_name.lower()
+    # Exclure les fichiers qui contiennent 'preview' ou 'thumbnail'
+    if 'preview' in file_name_lower or 'thumbnail' in file_name_lower:
+        return None
     for texture_type, keywords in texture_types.items():
         for keyword in keywords:
-            if keyword in file_name.lower():
+            if keyword in file_name_lower:
                 return texture_type
     return None
 
@@ -58,7 +62,7 @@ else:
         mtlx_standard_surface_node = selected_node.createNode('mtlxstandard_surface')
         mtlx_standard_surface_node.setName('mtlxstandard_surface', unique_name=True)
     # Demander à l'utilisateur de choisir un dossier
-    folder_path = hou.ui.selectFile(start_directory='/', file_type=hou.fileType.Directory, title='Select Folder')
+    folder_path = hou.ui.selectFile(start_directory='/', file_type=hou.fileType.Directory, title='Sélectionnez le dossier contenant les textures')
     if folder_path:
         # Extraire le nom du dossier à partir du chemin du dossier sélectionné
         folder_name = os.path.basename(os.path.normpath(folder_path))
@@ -70,7 +74,7 @@ else:
         image_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f)) and f.lower().endswith(('.png', '.jpg', '.jpeg', '.exr', '.tif', '.tiff'))]
 
         if not image_files:
-            hou.ui.displayMessage("No image files found in the selected folder.")
+            hou.ui.displayMessage("Aucun fichier image trouvé dans le dossier sélectionné.")
         else:
             # Variable pour compter le nombre de textures créées
             texture_count = 0
@@ -94,7 +98,7 @@ else:
                             mtlx_standard_surface_node.setInput(40, normal_map_node)
                             texture_count += 1
                         else:
-                            hou.ui.displayMessage(f"Failed to create mtlxgltf_normalmap node for {image_file}")
+                            hou.ui.displayMessage(f"Erreur lors de la création du nœud mtlxgltf_normalmap pour {image_file}")
                     else:
                         image_node = create_mtlximage_in_selected_node(selected_node, image_path, texture_type)
                         if image_node:
@@ -129,14 +133,15 @@ else:
                                 # Si vous souhaitez gérer l'émissif, ajoutez le code ici
                                 pass
                         else:
-                            hou.ui.displayMessage(f"Failed to create mtlximage node for {image_file}")
+                            hou.ui.displayMessage(f"Erreur lors de la création du nœud mtlximage pour {image_file}")
                 else:
-                    hou.ui.displayMessage(f"Texture type not recognized for {image_file}")
+                    # Ignorer silencieusement les fichiers non reconnus
+                    pass
 
             # Layout automatique des nœuds enfants du subnet
             selected_node.layoutChildren()
 
             if texture_count > 0:
-                hou.ui.displayMessage(f"{texture_count} texture nodes created and connected.")
+                hou.ui.displayMessage(f"{texture_count} nœuds de texture créés et connectés.")
             else:
-                hou.ui.displayMessage("No texture nodes created.")
+                hou.ui.displayMessage("Aucun nœud de texture créé.")
